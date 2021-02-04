@@ -5,7 +5,7 @@ export const getFoodTrucks = async () => {
   try {
     type FoodTruckData = { data: FoodTruck[] };
     const { data: foodTrucks }: FoodTruckData = (await Axios.get(
-      "https://data.sfgov.org/resource/rqzj-sfat.json"
+      process.env.SF_DATA_ENDPOINT as string
     )) as AxiosResponse<FoodTruck[]>;
     return foodTrucks;
   } catch (error) {

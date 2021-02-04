@@ -6,7 +6,7 @@ import { getFoodTrucksByCoordinates } from "./src/controllers/foodtrucks.control
 
 dotenv.config();
 
-const app: Express = express();
+export const app: Express = express();
 app.use(json());
 app.use(cors());
 

@@ -31,9 +31,7 @@ export const getClosestFoodTrucks = async (
     };
   });
 
-  console.log("AFTER", distances);
   const sortedDistances = _.sortBy(distances, distance => distance.distance);
-  console.log("AFTER", sortedDistances);
 
   let foodTrucksToReturn: FoodTruck[] = [];
 
@@ -43,7 +41,6 @@ export const getClosestFoodTrucks = async (
       const truck = getFoodTruckById(foodTrucks, distance.objectId);
 
       if (!_.isUndefined(truck) && !_.isNull(truck)) {
-        console.log(truck);
         foodTrucksToReturn.push(truck);
       }
     }
@@ -53,7 +50,6 @@ export const getClosestFoodTrucks = async (
       const truck = getFoodTruckById(foodTrucks, distance.objectId);
 
       if (!_.isUndefined(truck) && !_.isNull(truck)) {
-        console.log(truck);
         foodTrucksToReturn.push(truck);
       }
     }
