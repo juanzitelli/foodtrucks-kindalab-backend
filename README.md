@@ -18,6 +18,7 @@ Chosen project:
 - Node.js (JavaScript runtime)
 - Express.js (Web server library)
 - TypeScript (Static typing)
+- Jest + Supertest (Testing)
 
 ### Folder structure
 - src
