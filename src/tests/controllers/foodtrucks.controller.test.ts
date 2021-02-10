@@ -1,15 +1,21 @@
 import express from "express";
 import request from "supertest";
-import { app } from "./../../../index";
+import { app } from "../../../app";
 
-describe("Tests on FoodTrucks controller", function () {
-  it("Responds with a 400 if the coordinates are missing", function (done) {
-    request(app).get("/food-trucks").expect(400, done);
+require("dotenv").config();
+
+describe("Tests on FoodTrucks controller", () => {
+  let testApp: request.SuperTest<request.Test>;
+  beforeEach(() => {
+    testApp = request(app);
+  });
+  it("Should return 400 when lat and lng query params are missing", async done => {
+    testApp.get("/food-trucks").expect(400, done);
   });
 
-  it("Responds with a 200 if the coordinates exist", function (done) {
-    request(app)
-      .get("/food-trucks?lat=37.72378063123583&lon=-122.43611610497405")
-      .expect(200, done);
+  it("Should return 200 when lat and lng query params exist", async done => {
+    const lat = 37.72378063123583;
+    const lon = -122.43611610497405;
+    testApp.get(`/food-trucks?lat=${lat}&lon=${lon}`).expect(200, done);
   });
 });
